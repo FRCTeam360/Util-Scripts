@@ -181,20 +181,20 @@ for path_json in path_jsons:
     # Mirror the path
     for waypoint in path["waypoints"]:
         # Mirror the anchor point
-        waypoint["anchorPoint"]["x"] = 8.02 - waypoint["anchorPoint"]["x"]
+        waypoint["anchorPoint"]["x"] = 16.54 - waypoint["anchorPoint"]["x"]
 
         # Mirror the prev control point
         if waypoint["prevControl"] is not None:
-            waypoint["prevControl"]["x"] = 8.02 - waypoint["prevControl"]["x"]
+            waypoint["prevControl"]["x"] = 16.54 - waypoint["prevControl"]["x"]
 
         # Mirror the next control point
         if waypoint["nextControl"] is not None:
-            waypoint["nextControl"]["x"] = 8.02 - waypoint["nextControl"]["x"]
+            waypoint["nextControl"]["x"] = 16.54 - waypoint["nextControl"]["x"]
 
         # Mirror the holonomic angle
         waypoint["holonomicAngle"] = 360.0 - waypoint["holonomicAngle"]
 
     # Save the mirrored path
-    mirrored_path_json = os.path.splitext(path_json)[0] + "_mirrored.json"
+    mirrored_path_json = os.path.splitext(path_json)[0] + "_mirrored.path"
     with open(mirrored_path_json, "w") as f:
         json.dump(path, f, indent=2)
