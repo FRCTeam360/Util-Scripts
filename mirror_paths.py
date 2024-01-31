@@ -163,6 +163,7 @@ import math
 import os
 import sys
 
+# messes up  by making name and allicence mix match  
 # Begin by taking the comma separated list of path jsons as a command line argument
 if len(sys.argv) != 2:
     print("Usage: python mirror_paths.py <comma separated list of path jsons>")
