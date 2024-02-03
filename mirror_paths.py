@@ -195,7 +195,12 @@ for path_json in path_jsons:
         # Mirror the holonomic angle
         waypoint["holonomicAngle"] = 360.0 - waypoint["holonomicAngle"]
 
-    # Save the mirrored path
-    mirrored_path_json = os.path.splitext(path_json)[0] + "_mirrored.path"
+    # Save the mirrored path and fixes naem of alliance 
+    if re.search(r'(?i)red',mirrored_path_json):
+        mirrored_path_json = re.sub(r'(?i)red','blue',mirror_paths)
+    else if re.search(r'(?i)blue',mirrored_path_json):
+        mirrored_path_json = re.sub(r'(?i)blue','red',mirror_paths)
+
+    mirrored_path_json = os.path.splitext(path_json)[0] + "_mirrored" + os.path.splitext(mirrored_path_json)[1]
     with open(mirrored_path_json, "w") as f:
         json.dump(path, f, indent=2)
